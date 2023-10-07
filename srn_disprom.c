@@ -7,5 +7,5 @@
 
 void srn_prompt(void)
 {
-	srn_print ("vampires_NE$");
+	srn_print("vampires_NE$");
 }
