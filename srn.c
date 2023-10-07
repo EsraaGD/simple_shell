@@ -2,7 +2,7 @@
 
 /**
  * main - print the environment
- * @ragc: count of arguments
+ * @argc: count of arguments
  * @argv: arguments
  * Return: Alway 0.
  */
@@ -18,14 +18,12 @@ int main(int argc, char **argv)
 		line = read_input();
 		if (line == NULL) /* end of file ctrl + D */
 		{
-			if (isatty(SIDIN_FILENO))
-				write(STDOUT_FILENO, '\n', 1);
+			if (isatty(STDIN_FILENO))
+				srn_print((char *)'\n');
 			return (status);
 		}
 
-		srn_print("%s", line);
 		free(line);
 
 	}
-return (0);
 }

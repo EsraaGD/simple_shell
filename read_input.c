@@ -14,8 +14,8 @@ char *read_input(void)
 	{
 		srn_print("$ ");
 	}
-	i = getline(&line, &len, stdin);
-	if (i == -1)
+	nemra =  getline(&line, &len, stdin);
+	if (nemra == -1)
 	{
 		free(line);
 		return (NULL);
