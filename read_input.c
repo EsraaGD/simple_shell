@@ -8,10 +8,12 @@ char *read_input(void)
 {
 	char *line = NULL;
 	size_t len = 0;
-	ssize_t i;
+	ssize_t nemra;
 
 	if (isatty(STDIN_FILENO))
-	write(STDOUT_FILENO, "$ ", 2);
+	{
+		srn_print("$ ");
+	}
 	i = getline(&line, &len, stdin);
 	if (i == -1)
 	{

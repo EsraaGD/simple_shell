@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 void srn_print(const char *bloodsucker);
-void srn_disprom(void);
+void srn_prompt(void);
+char *read_input(void);
 
 #endif
