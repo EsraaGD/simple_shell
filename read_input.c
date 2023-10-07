@@ -11,15 +11,12 @@ char *read_input(void)
 	ssize_t nemra;
 
 	if (isatty(STDIN_FILENO))
-	{
 		srn_print("$ ");
-	}
 	nemra =  getline(&line, &len, stdin);
 	if (nemra == -1)
 	{
 		free(line);
 		return (NULL);
 	}
-
 	return (line);
 }

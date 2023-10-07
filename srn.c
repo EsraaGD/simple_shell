@@ -1,6 +1,6 @@
 #include "srn.h"
 
-/**
+/*
  * main - print the environment
  * @argc: count of arguments
  * @argv: arguments
@@ -24,6 +24,5 @@ int main(int argc, char **argv)
 		}
 
 		free(line);
-
 	}
 }
