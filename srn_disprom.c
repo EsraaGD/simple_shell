@@ -1,7 +1,7 @@
 #include "srn.h"
 
 /**
- * srn_disprom - displsy the prompt for the user to start a command
+ * srn_prompt - display the prompt for the vampire to start a command
  * Return: 0
  */
 

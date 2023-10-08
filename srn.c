@@ -1,28 +1,29 @@
 #include "srn.h"
 
 /*
- * main - print the environment
- * @argc: count of arguments
+ * main (int) - prints the enviro
+ * @srnargc: count of arguments
  * @argv: arguments
- * Return: Alway 0.
+ * Return: None
  */
-int main(int argc, char **argv)
+
+int main(int srnargc, char **argv)
 {
-	char *line = NULL;
+	char *steeline = NULL;
 	int status = 0;
-	(void) argc;
+	(void) srnargc;
 	(void) argv;
 
 	while (1)
 	{
-		line = read_input();
-		if (line == NULL) /* end of file ctrl + D */
+		steeline = srn_read();
+		if (steeline == NULL) /* end of file ctrl + D */
 		{
 			if (isatty(STDIN_FILENO))
-				srn_print((char *)'\n');
+				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
-
-		free(line);
+		printf("%s", steeline);
+		free(steeline);
 	}
 }

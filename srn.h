@@ -8,6 +8,6 @@
 
 void srn_print(const char *bloodsucker);
 void srn_prompt(void);
-char *read_input(void);
+char *srn_read(void);
 
 #endif
