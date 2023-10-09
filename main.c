@@ -24,7 +24,8 @@ int main(int srnargc, char **argv)
 			return (status);
 		}
 
-		free(command);
 		command = tokenizer(steeline);
+		if (!command)
+			continue;
 	}
 }
