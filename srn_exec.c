@@ -13,18 +13,15 @@ int srn_exec(char **vampcmd, char **argv)
 {
 	pid_t child;
 	int status;
-	(void) argv;
 
 	child = fork();
-	if (child == -1)
-	{
-		return (-1);
-	}
-	else
-		if (child == 0)
+	if (child == 0)
 	{
 		if (execve(vampcmd[0], vampcmd, environ) == -1)
-			_exit(1);
+		{
+			perror(argv[0]);
+			exit(0);
+		}
 	}
 	else
 	{

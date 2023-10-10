@@ -29,11 +29,7 @@ int main(int argc, char **argv)
 			continue;
 
 		status =srn_exec(vampcmd, argv);
-		if (status == -1)
-		{
-			perror("srn_exec");
-			return (1);
-		}
+
 		free(vampcmd);
 
 	}
