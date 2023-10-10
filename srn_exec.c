@@ -18,6 +18,11 @@ int srn_exec(char **vampcmd, char **argv)
 	child = fork();
 	if (child == -1)
 	{
+		return (-1);
+	}
+	else
+		if (child == 0)
+	{
 		if (execve(vampcmd[0], vampcmd, environ) == -1)
 			_exit(1);
 	}

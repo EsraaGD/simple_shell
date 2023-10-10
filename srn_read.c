@@ -14,7 +14,7 @@ char *srn_read(void)
 	ssize_t nemra;
 
 	if (isatty(STDIN_FILENO))
-		srn_print("$ ");
+		write(STDOUT_FILENO, "$ ", 2);
 	nemra =  getline(&steeline, &steelen, stdin);
 
 	if (nemra == -1)

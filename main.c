@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		if (steeline == NULL) /* end of file ctrl + D */
 		{
 			if (isatty(STDIN_FILENO))
-				srn_print((char *)"\n");
+				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 
 			free(steeline);
