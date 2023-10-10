@@ -12,10 +12,16 @@
 #include <fcntl.h>
 
 #define DELIMITER " \t\n"
+extern char **environ;
+
 void srn_print(const char *bloodsucker);
 void srn_prompt(void);
 char *srn_read(void);
 char **tokenizer(char *steeline);
+
+int srn_exec(char **vampcmd, char **argv[]);
+
+void srn_2d(char **srnarr);
 
 char *_strdup(const char *str);
 

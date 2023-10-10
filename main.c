@@ -9,10 +9,9 @@
 
 int main(int srnargc, char **argv)
 {
-	char *steeline = NULL, **command = NULL;
+	char *steeline = NULL, **vampcmd = NULL;
 	int status = 0;
 	(void) srnargc;
-	(void) argv;
 
 	while (1)
 	{
@@ -24,8 +23,11 @@ int main(int srnargc, char **argv)
 			return (status);
 		}
 
-		command = tokenizer(steeline);
-		if (!command)
+		free(vampcmd);
+		vampcmd = tokenizer(steeline);
+		if (!vampcmd)
 			continue;
+
+		status = srn_exec(vampcmd, argv);
 	}
 }
