@@ -8,24 +8,22 @@
  * Return: false or -1
  */
 
-int srn_exec(char **vampcmd, char **argv[])
+int srn_exec(char **vampcmd, char **argv)
 
 {
-	pid_t child = fork();
+	pid_t child;
 	int status;
+	(void) argv;
 
-	if (child == 0)
+	child = fork();
+	if (child == -1)
 	{
 		if (execve(vampcmd[0], vampcmd, environ) == -1)
-		{
-			perror(argv[0]);
-			srn_2d(vampcmd);
-		}
+			_exit(1);
 	}
 	else
 	{
 		waitpid(child, &status, 0);
-		srn_2d(vampcmd);
 	}
 	return (WEXITSTATUS(status));
 }

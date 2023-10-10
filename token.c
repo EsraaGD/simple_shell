@@ -7,14 +7,14 @@
 char **tokenizer(char *steeline)
 {
 	char *token = NULL;
-	char **command = NULL;
+	char **vampcmd = NULL;
 	int cpt = 0, i = 0;
 
 	if (steeline)
 	{
 		return (NULL);
 	}
-	token = (char  *)_strdup(steeline);
+	token = _strdup(steeline);
 	if (!token)
 	{
 		return (NULL);
@@ -28,26 +28,27 @@ char **tokenizer(char *steeline)
 	/* Free the memory allocated by _strdup() */
 	free(token);
 
-	command = (char **)malloc(sizeof(char *) * (cpt + 1));
-	if (!command)
+	vampcmd= (char **)malloc(sizeof(char *) * (cpt + 1));
+	if (!vampcmd)
 	{
 		return (NULL);
 	} 
-	token = (char *)_strdup(steeline);
+	token = _strdup(steeline);
 	if (!token)
 	{
-		free(command);
+		free(vampcmd);
 		return (NULL);
 	}
 
 	while (token)
 	{
-		command[i] = _strdup(token);
+		vampcmd[i] = _strdup(token);
 		token = strtok(NULL, DELIMITER);
 		i++;
 	}
 	/* Free the memory allocated by steeline */
 	free(token);
-	command[i] = NULL;
-	return (command);
+
+	vampcmd[i] = NULL;
+	return vampcmd;
 }

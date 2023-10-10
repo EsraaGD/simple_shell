@@ -7,11 +7,11 @@
  * Return: None
  */
 
-int main(int srnargc, char **argv)
+int main(int argc, char **argv)
 {
 	char *steeline = NULL, **vampcmd = NULL;
 	int status = 0;
-	(void) srnargc;
+	(void) argc;
 
 	while (1)
 	{
@@ -21,13 +21,23 @@ int main(int srnargc, char **argv)
 			if (isatty(STDIN_FILENO))
 				srn_print((char *)"\n");
 			return (status);
-		}
 
+			free(steeline);
+		}
 		free(vampcmd);
 		vampcmd = tokenizer(steeline);
 		if (!vampcmd)
 			continue;
 
 		status = srn_exec(vampcmd, argv);
+		if (status == -1)
+		{
+			perror("srn_exec");
+			return (1);
+		}
+		freearray(vampcmd);
+
 	}
+	return (0);
 }
+

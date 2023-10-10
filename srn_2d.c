@@ -6,7 +6,7 @@
  * Return: 0
  */
 
-void srn_2d(char **srnarr)
+void freearray(char **srnarr)
 {
 	int iyes;
 
