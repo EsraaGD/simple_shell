@@ -11,10 +11,10 @@
 #include <errno.h>
 #include <fcntl.h>
 
-#define DELIMITER " \t\n"
+#define DELIM " \t\n"
 extern char **environ;
 
-char *srn_read(void);
+char *read_input(void);
 char **tokenizer(char *steeline);
 int srn_exec(char **vampcmd, char **argv);
 void freearray(char **srnarr);

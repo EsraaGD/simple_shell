@@ -1,22 +1,19 @@
 #include "srn.h"
 
 /**
- * srn_read - read vampire inputs
+ * read_input - read vampire inputs
  *
  * Return: Always 0 in success.
  */
-char *srn_read(void)
+char *read_input(void)
 {
 	char *steeline = NULL;
-
-	size_t steelen = 0;
-
+	size_t len = 0;
 	ssize_t nemra;
 
-	if (isatty(STDIN_FILENO))
+	if (isatty(STDIN_FILENO) == 1)
 		write(STDOUT_FILENO, "$ ", 2);
-	nemra =  getline(&steeline, &steelen, stdin);
-
+	nemra =  getline(&steeline, &len, stdin);
 	if (nemra == -1)
 	{
 		free(steeline);

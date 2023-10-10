@@ -15,27 +15,26 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		steeline = srn_read();
+		steeline = read_input();
 		if (steeline == NULL) /* end of file ctrl + D */
 		{
 			if (isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, "\n", 1);
+			write(STDOUT_FILENO, "\n", 1);
 			return (status);
 
-			free(steeline);
 		}
-		free(vampcmd);
+
 		vampcmd = tokenizer(steeline);
 		if (!vampcmd)
 			continue;
 
-		status = srn_exec(vampcmd, argv);
+		status =srn_exec(vampcmd, argv);
 		if (status == -1)
 		{
 			perror("srn_exec");
 			return (1);
 		}
-		freearray(vampcmd);
+		free(vampcmd);
 
 	}
 	return (0);
