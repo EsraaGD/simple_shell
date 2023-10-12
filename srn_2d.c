@@ -1,12 +1,12 @@
 #include "srn.h"
 
 /**
- * srn_2d - free the beasts
+ * srn_freearr - free the beasts
  * @srnarr: array of snars
  * Return: 0
  */
 
-void freearray(char **srnarr)
+void srn_freearr(char **srnarr)
 {
 	int iyes;
 

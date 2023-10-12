@@ -1,31 +1,38 @@
 #include "srn.h"
 
-/**
- * srn_exec - execte command inputted by vamps
- * @vampcmd: command by vamp
- * @argv: arguments suishg
- *
- * Return: false or -1
+/*
+ * srn_execute - function to execute vampire command
+ * Return: command
  */
 
-int srn_exec(char **vampcmd, char **argv)
-
+int srn_execute(char **vampcmd, char **argv)
 {
-	pid_t child;
-	int status;
+    pid_t baby;
 
-	child = fork();
-	if (child == 0)
+    int status;
+
+    if (strchr(vampcmd[0], '/') == NULL)
 	{
-		if (execve(vampcmd[0], vampcmd, environ) == -1)
-		{
-			perror(argv[0]);
-			exit(0);
-		}
+		fprintf(stderr, "%s: %d: %s: Not found\n", argv[0], 1, vampcmd[0]);
+		srn_freearr(vampcmd);
+		status = 127;
+		return status;
 	}
-	else
-	{
-		waitpid(child, &status, 0);
-	}
-	return (WEXITSTATUS(status));
+
+    baby = fork();
+    if (baby == 0)
+    {
+        if (execve(vampcmd[0], vampcmd, environ) == -1)
+        {
+            fprintf(stderr, "%s: %d: %s: Not found\n", argv[0], 1, vampcmd[0]);
+            srn_freearr(vampcmd);
+            exit(127);
+        }
+    }
+    else
+    {
+        waitpid(baby, &status, 0);
+        srn_freearr(vampcmd);
+    }
+    return (WEXITSTATUS(status));
 }

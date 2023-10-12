@@ -2,23 +2,26 @@
 #define SRN_H
 
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <errno.h>
-#include <fcntl.h>
 
 #define DELIM " \t\n"
 extern char **environ;
 
-char *read_input(void);
-char **tokenizer(char *steeline);
-int srn_exec(char **vampcmd, char **argv);
-void freearray(char **srnarr);
+char *srn_read(void);
+char **srn_token(char *steeline);
+int srn_execute(char **vampcmd, char **argv);
+void srn_freearr(char **srnarr);
 
-char *_strdup(const char *str);
+char *srn_duplicate(const char *str249);
+int srn_compare(char *s1249, char *s249);
+int srn_lenght(char *s249);
+char *srn_cat(char *dest249, char *src249);
+char *srn_copy(char *dest249, char *src249);
 
 #endif
