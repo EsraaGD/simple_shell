@@ -1,11 +1,11 @@
 #include "srn.h"
 
-/*
-   main - prints the enviro
-   @ac: count of arguments
-   @av: arguments
-Return: none
-*/
+/**
+ * main - prints the enviro
+ * @ac: count of arguments
+ * @argv: arguments
+ * Return: none
+ */
 
 int main(int ac, char **argv)
 {

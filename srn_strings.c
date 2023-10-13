@@ -2,11 +2,12 @@
 
 /**
  * srn_lenght - find length of string
- * @s: input string
+ * @s249: input string
  * Return: the length
  */
 
 int srn_lenght(char *s249)
+
 {
 	int tall = 0;
 
@@ -79,7 +80,7 @@ int srn_compare(char *s1249, char *s249)
 			break;
 		s1249++;
 		s249++;
-		cmpvar = (int) * s1249 - (int) *s249;
+		cmpvar = (int) *s1249 - (int) *s249;
 	}
 	return (cmpvar);
 }

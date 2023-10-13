@@ -1,7 +1,7 @@
 #include "srn.h"
 
-/*
- * srn_read - read vampire input
+/**
+ * *srn_read - read vampire input
  * Return: 0
  */
 
