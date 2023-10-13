@@ -17,6 +17,8 @@ char *srn_read(void);
 char **srn_token(char *steeline);
 int srn_execute(char **vampcmd, char **argv);
 void srn_freearr(char **srnarr);
+char *srn_getenv(char *variable);
+char *srn_getpath(char *vampcmd);
 
 char *srn_duplicate(const char *str249);
 int srn_compare(char *s1249, char *s249);
