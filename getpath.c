@@ -8,13 +8,30 @@
 char *srn_getpath(char *vampcmd)
 {
 	char *path_env, *full_cmd, *direc;
+	int v;
 	struct stat rv;
 
-	path_env = srn_getenv("PATH");
+	/* if vampcmd is already path */
+	for (v = 0; vampcmd[v]; v++)
+	{
+		if (vampcmd[v] == '/')
+		{
+			if (stat(vampcmd, &rv) == 0) /* if path exist */
+				return (srn_duplicate(vampcmd));
 
+			return (NULL);
+		}
+	}
+	/* if user unset path (can not get dir) */
+	path_env = srn_getenv("PATH");
+	if (!path_env)
+		return (NULL);
+
+	/* try handle path */
 	direc = strtok(path_env, ":");
 	while (direc)
 	{
+		/* size = len(direc) + len(vampcmd) + 2 ('/' and '\0') */
 		full_cmd = malloc(srn_lenght(direc) + strlen(vampcmd) + 2);
 		if (full_cmd)
 		{
