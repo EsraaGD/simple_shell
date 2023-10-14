@@ -1,27 +1,30 @@
 #include "srn.h"
 
 /**
- * srn_getenv - the envrument
- * @variable: string
- * Return: NULL.
+ * *srn_getenv - the envrument
+ * @input: string
+ * Return: NULL
  */
-char *srn_getenv(char *variable)
+
+char *srn_getenv(char *input)
 {
-	char *tmp, *key, *value, *env;
 	int v;
+	char *tmp, *ikey, *ivalue, *env;
 
 	for (v = 0; environ[v]; v++)
 	{
 		tmp = srn_duplicate(environ[v]);
-		key = strtok(tmp, "=");
-		if (srn_compare(key, variable) == 0)
+		ikey = strtok(tmp, "=");
+
+		if (srn_compare(ikey, input) == 0)
 		{
-			value = strtok(NULL, "\n");
-			env = srn_duplicate(value);
+			ivalue = strtok(NULL, "\n");
 			free(tmp);
+			env = srn_duplicate(ivalue);
 			return (env);
 		}
 		free(tmp), tmp = NULL;
+
 	}
 	return (NULL);
 }

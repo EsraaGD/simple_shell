@@ -2,12 +2,12 @@
 
 /**
  * srn_getpath - the path of usre
- * @command: the command
+ * @vampcmd: the command
  * Return: NULL.
  */
 char *srn_getpath(char *vampcmd)
 {
-	char *path_env, *full_cmd, *direc;
+	char *path_env, *full_vcmd, *direc;
 	int v;
 	struct stat rv;
 
@@ -32,18 +32,18 @@ char *srn_getpath(char *vampcmd)
 	while (direc)
 	{
 		/* size = len(direc) + len(vampcmd) + 2 ('/' and '\0') */
-		full_cmd = malloc(srn_lenght(direc) + strlen(vampcmd) + 2);
-		if (full_cmd)
+		full_vcmd = malloc(srn_lenght(direc) + strlen(vampcmd) + 2);
+		if (full_vcmd)
 		{
-			srn_copy(full_cmd, direc);
-			srn_cat(full_cmd, "/");
-			srn_cat(full_cmd, vampcmd);
-			if (stat(full_cmd, &rv) == 0)
+			srn_copy(full_vcmd, direc);
+			srn_cat(full_vcmd, "/");
+			srn_cat(full_vcmd, vampcmd);
+			if (stat(full_vcmd, &rv) == 0)
 			{
 				free(path_env);
-				return (full_cmd);
+				return (full_vcmd);
 			}
-			free(full_cmd), full_cmd = NULL;
+			free(full_vcmd), full_vcmd = NULL;
 
 			direc = strtok(NULL, ":");
 		}

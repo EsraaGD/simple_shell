@@ -10,7 +10,7 @@
 int main(int ac, char **argv)
 {
 	char *line = NULL, **command = NULL;
-	int status = 0;
+	int status = 0, indexno = 0;
 	(void) ac;
 	(void) argv;
 
@@ -23,7 +23,7 @@ int main(int ac, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
-
+		indexno++;
 		command = srn_token(line);
 		if (!command)
 			continue;
@@ -34,7 +34,7 @@ int main(int ac, char **argv)
 			exit(status);
 		}
 
-		status = srn_execute(command, argv);
+		status = srn_execute(command, argv, indexno);
 	}
 
 }
