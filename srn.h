@@ -27,7 +27,7 @@ char *srn_cat(char *dest249, char *src249);
 char *srn_copy(char *dest249, char *src249);
 void srn_reverse(char *str249, int len249);
 
-void srn_printerr(char *name, char *command, int indexno);
+void srn_printerr(char *name, char *vampcmd, int indexno);
 char *srn_intostr(int wai);
 
 #endif

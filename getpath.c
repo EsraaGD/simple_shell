@@ -44,7 +44,6 @@ char *srn_getpath(char *vampcmd)
 				return (full_vcmd);
 			}
 			free(full_vcmd), full_vcmd = NULL;
-
 			direc = strtok(NULL, ":");
 		}
 	}

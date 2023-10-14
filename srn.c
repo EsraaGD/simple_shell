@@ -9,7 +9,7 @@
 
 int main(int ac, char **argv)
 {
-	char *line = NULL, **command = NULL;
+	char *line = NULL, **vampcmd = NULL;
 	int status = 0, indexno = 0;
 	(void) ac;
 	(void) argv;
@@ -24,17 +24,17 @@ int main(int ac, char **argv)
 			return (status);
 		}
 		indexno++;
-		command = srn_token(line);
-		if (!command)
+		vampcmd = srn_token(line);
+		if (!vampcmd)
 			continue;
 
-		if (srn_compare(command[0], "exit") == 0)
+		if (srn_compare(vampcmd[0], "exit") == 0)
 		{
-			srn_freearr(command);
+			srn_freearr(vampcmd);
 			exit(status);
 		}
 
-		status = srn_execute(command, argv, indexno);
+		status = srn_execute(vampcmd, argv, indexno);
 	}
 
 }

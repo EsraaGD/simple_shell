@@ -25,12 +25,12 @@ void srn_freearr(char **srnarr)
 /**
  * srn_printerr - prints error message
  * @name: name of command Eg:hello
- * @command:command to be executd
+ * @vampcmd: command to be executd
  * @indexno: number of command
  * Return: NULL
  */
 
-void srn_printerr(char *name, char *command, int indexno)
+void srn_printerr(char *name, char *vampcmd, int indexno)
 {
 	char *index, resala[] = ": not found\n";
 
@@ -40,7 +40,7 @@ void srn_printerr(char *name, char *command, int indexno)
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, index, srn_lenght(index));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, command, srn_lenght(command));
+	write(STDERR_FILENO, vampcmd, srn_lenght(vampcmd));
 	write(STDERR_FILENO, resala, srn_lenght(resala));
 
 	free(index);
