@@ -21,6 +21,16 @@ int srn_execute(char **vampcmd, char **argv, int indexno)
 		srn_freearr(vampcmd);
 		return (127);
 	}
+
+	/* Check if the command exists */
+	if (access(full_vcmd, X_OK) != 0)
+	{
+		fprintf(stderr, "Command '%s' does not exist.\n", vampcmd[0]);
+		srn_freearr(vampcmd);
+		free(full_vcmd);
+		return (127);
+	}
+
 	baby = fork();
 	if (baby == 0)
 	{
