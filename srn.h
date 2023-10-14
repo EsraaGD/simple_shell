@@ -27,6 +27,11 @@ char *srn_cat(char *dest249, char *src249);
 char *srn_copy(char *dest249, char *src249);
 void srn_reverse(char *str249, int len249);
 
+char the_builtin(char *vampcmd);
+void srn_builtin(char **vampcmd, char **argv, int *status, int indexno);
+void exit_shell(char **vampcmd, int *status);
+void print_env(char **vampcmd, int *status);
+
 void srn_printerr(char *name, char *vampcmd, int indexno);
 char *srn_intostr(int wai);
 

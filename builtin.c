@@ -1,54 +1,46 @@
 #include "srn.h"
 
+char *builtins[] = {
+	"exit", "env", "setenv",
+	"cd", NULL
+};
+
 /**
  * the_builtin - built
  * @vampcmd: command
- * Return: None.
+ * Return: None
  */
-char the_builrin(cahr *vampcmd)
+char the_builtin(char *vampcmd)
 {
-	char *builtins[] = {
-		"exit", "env", "setenv",
-		"cd", NULL
-	};
+	(void) vampcmd;
+
+	return (0);
+}
 /**
  * srn_builtin - handle the built
  * @vampcmd: command
- * @argv: argument
  * @status:  an integer pointer
  * @idx: the indax
- * Return: 0.
+ * Return: None
  */
 void srn_builtin(char **vampcmd, char **argv, int *status, int indexno)
 {
-	(void) arg;
+	(void) argv;
 	(void) indexno;
 
 	if (srn_compare(vampcmd[0], "exit") == 0)
 		exit_shell(vampcmd, status);
 
 	else if (srn_compare(vampcmd[0], "env") == 0)
-		print_env(command, status);
+		print_env(vampcmd, status);
 }
 
-/**
- * exit_shell - exit shell
- * @vampcmd: the command
- * @status:  an integer pointer
- * Return: None
- */
 void exit_shell(char **vampcmd, int *status)
 {
 	srn_freearr(vampcmd);
 	exit(*status);
 }
 
-/**
- * print_env - print the envaurment
- * @vampcmd: command
- * @status: an integer pointer
- * Return: None
- */
 void print_env(char **vampcmd, int *status)
 {
 	int v;
@@ -59,5 +51,5 @@ void print_env(char **vampcmd, int *status)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	srn_freearr(vampcmd);
-	status = 0;
+	(*status) = 0;
 }
