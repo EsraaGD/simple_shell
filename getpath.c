@@ -15,7 +15,7 @@ char *srn_getpath(char *vampcmd)
 	{
 		if (vampcmd[i] == '/')
 		{
-			if (stat(vampcmd, &st) == 0)
+			if (stat(vampcmd, &st) == 0) /* if path exist */
 				return (srn_duplicate(vampcmd));
 
 			return (NULL);
