@@ -23,8 +23,6 @@ char *srn_getpath(char *vampcmd)
 	}
 
 	path_env = srn_getenv("PATH");
-	if (!path_env)
-		return (NULL);
 
 	direc = strtok(path_env, ":");
 	while (direc)

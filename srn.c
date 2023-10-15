@@ -34,6 +34,9 @@ int main(int ac, char **argv)
 			exit(status);
 		}
 
+		if (the_builtin(vampcmd[0]))
+			srn_builtin(vampcmd, argv, &status, indexno);
+		else
 		status = srn_execute(vampcmd, argv, indexno);
 	}
 

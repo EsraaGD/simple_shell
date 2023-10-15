@@ -29,10 +29,11 @@ void srn_reverse(char *str249, int len249);
 
 char the_builtin(char *vampcmd);
 void srn_builtin(char **vampcmd, char **argv, int *status, int indexno);
-void exit_shell(char **vampcmd, int *status);
+void exit_shell(char **vampcmd, char **argv, int *status, int indexno);
 void print_env(char **vampcmd, int *status);
 
 void srn_printerr(char *name, char *vampcmd, int indexno);
+int is_positive(char *wai);
 char *srn_intostr(int wai);
-
+int srn_strtoin(char *wai);
 #endif
