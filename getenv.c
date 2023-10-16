@@ -1,6 +1,23 @@
 #include "srn.h"
 
 /**
+ * print_env - print the currect environment
+ * Retrun: None
+ */
+void print_env (char **vampcmd, int *status)
+{
+	extern char **environ;
+	int v;
+	(void) vampcmd;
+	(void) status;
+
+	for (v = 0; environ[v]  != NULL; v++)
+	{
+		write(1, environ[v], strlen(environ[v]));
+		write(1, "\n", 1);
+	}
+}
+/**
  * *srn_getenv - the envrument
  * @input: string
  * Return: NULL

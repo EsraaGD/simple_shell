@@ -1,10 +1,5 @@
 #include "srn.h"
-
-char *builtins[] = {
-	"exit", "env", "setenv",
-	"cd", NULL
-};
-
+	
 /**
  * the_builtin - built
  * @vampcmd: command
@@ -12,9 +7,16 @@ char *builtins[] = {
  */
 char the_builtin(char *vampcmd)
 {
-	(void) vampcmd;
+	char *builtins[] = {"exit", "env", "cd", NULL};
+	int v;
 
-	return (1);
+	for (v = 0; builtins[v]; v++)
+	{
+		if (srn_compare(vampcmd, builtins[v]) == 0)
+			return (1);
+	}
+
+	return (0);
 }
 /**
  * srn_builtin - handle the built
@@ -62,7 +64,7 @@ void exit_shell(char **vampcmd, char **argv, int *status, int indexno)
 	}
 }
 
-void print_env(char **vampcmd, int *status)
+/* void print_env(char **vampcmd, int *status)
 {
 	int v;
 
@@ -73,4 +75,4 @@ void print_env(char **vampcmd, int *status)
 	}
 	srn_freearr(vampcmd);
 	(*status) = 0;
-}
+} */
