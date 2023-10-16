@@ -14,7 +14,7 @@ char the_builtin(char *vampcmd)
 {
 	(void) vampcmd;
 
-	return (0);
+	return (1);
 }
 /**
  * srn_builtin - handle the built
@@ -35,7 +35,7 @@ void srn_builtin(char **vampcmd, char **argv, int *status, int indexno)
 
 void exit_shell(char **vampcmd, char **argv, int *status, int indexno)
 {
-	int exit_ivalue = (*status);
+	int exit_ivalue = *status;
 	char *index, resala[] = ": exit: ILLEGAL NUMBER: ";
 
 	if (vampcmd[1])
@@ -57,8 +57,8 @@ void exit_shell(char **vampcmd, char **argv, int *status, int indexno)
 			srn_freearr(vampcmd);
 			return;
 		}
-	srn_freearr(vampcmd);
-	exit(exit_ivalue);
+		srn_freearr(vampcmd);
+		exit(exit_ivalue);
 	}
 }
 
