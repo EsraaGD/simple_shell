@@ -8,7 +8,7 @@
  */
 void print_env(char **vampcmd, int *status)
 {
-	char **environ;
+	extern char **environ;
 	int v;
 	(void) vampcmd;
 	(void) status;
