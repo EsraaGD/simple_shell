@@ -2,11 +2,13 @@
 
 /**
  * print_env - print the currect environment
+ * @vampcmd: command
+ * @status: stat
  * Retrun: None
  */
-void print_env (char **vampcmd, int *status)
+void print_env(char **vampcmd, int *status)
 {
-	extern char **environ;
+	char **environ;
 	int v;
 	(void) vampcmd;
 	(void) status;

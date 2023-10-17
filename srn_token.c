@@ -5,7 +5,6 @@
  * @steeline: line
  * Return: Tokenized string
  */
-
 char **srn_token(char *steeline)
 {
 	char *tokensep = NULL, *tmp = NULL;
@@ -38,6 +37,16 @@ char **srn_token(char *steeline)
 	while (tokensep)
 	{
 		vampcmd[v] = srn_duplicate(tokensep);
+		if (vampcmd[v] == NULL)
+		{
+			while (v > 0)
+			{
+				free(vampcmd[--v]);
+			}
+			free(vampcmd);
+			free(steeline);
+			return (NULL);
+		}
 		tokensep = strtok(NULL, DELIM);
 		v++;
 	}
