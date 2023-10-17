@@ -27,7 +27,6 @@ char the_builtin(char *vampcmd)
  */
 void srn_builtin(char **vampcmd, char **argv, int *status, int indexno)
 {
-
 	if (srn_compare(vampcmd[0], "exit") == 0)
 		exit_shell(vampcmd, argv, status, indexno);
 
@@ -61,6 +60,11 @@ void exit_shell(char **vampcmd, char **argv, int *status, int indexno)
 		}
 		srn_freearr(vampcmd);
 		exit(exit_ivalue);
+	}
+	else
+	{
+		srn_freearr(vampcmd);
+		exit(0);
 	}
 }
 

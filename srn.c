@@ -30,10 +30,9 @@ int main(int ac, char **argv)
 
 		if (srn_compare(vampcmd[0], "exit") == 0)
 		{
-			srn_freearr(vampcmd);
 			exit_shell(vampcmd, argv, &status, indexno);
+			srn_freearr(vampcmd);
 		}
-
 		if (the_builtin(vampcmd[0]))
 			srn_builtin(vampcmd, argv, &status, indexno);
 		else

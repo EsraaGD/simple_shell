@@ -31,6 +31,7 @@ char the_builtin(char *vampcmd);
 void srn_builtin(char **vampcmd, char **argv, int *status, int indexno);
 void exit_shell(char **vampcmd, char **argv, int *status, int indexno);
 void print_env(char **vampcmd, int *status);
+void srn_parse(char *input, char **vcmd_args);
 
 void srn_printerr(char *name, char *vampcmd, int indexno);
 int is_positive(char *wai);
