@@ -1,5 +1,4 @@
 #include "srn.h"
-
 /**
  * srn_execute - function to execute vampire command
  * @vampcmd: command
@@ -7,7 +6,6 @@
  * @indexno: number to specify number of command
  * Return: command
  */
-
 int srn_execute(char **vampcmd, char **argv, int indexno)
 {
 	char *full_vcmd;
