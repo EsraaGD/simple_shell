@@ -1,5 +1,5 @@
 #include "srn.h"
-	
+
 /**
  * the_builtin - built
  * @vampcmd: command
@@ -22,7 +22,8 @@ char the_builtin(char *vampcmd)
  * srn_builtin - handle the built
  * @vampcmd: command
  * @status:  an integer pointer
- * @idx: the indax
+ * @indexno: the indax
+ * @argv: array
  * Return: None
  */
 void srn_builtin(char **vampcmd, char **argv, int *status, int indexno)
@@ -34,6 +35,14 @@ void srn_builtin(char **vampcmd, char **argv, int *status, int indexno)
 		print_env(vampcmd, status);
 }
 
+/**
+ * exit_shell - exits the vampire shell
+ * @vampcmd: command
+ * @status: int ptr
+ * @indexno:indaxx
+ * @argv: array
+ * Return: None
+ */
 void exit_shell(char **vampcmd, char **argv, int *status, int indexno)
 {
 	int exit_ivalue = *status;
@@ -67,16 +76,3 @@ void exit_shell(char **vampcmd, char **argv, int *status, int indexno)
 		exit(0);
 	}
 }
-
-/* void print_env(char **vampcmd, int *status)
-{
-	int v;
-
-	for (v = 0; environ[v]; v++)
-	{
-		write(STDOUT_FILENO, environ[v], srn_lenght(environ[v]));
-		write(STDOUT_FILENO, "\n", 1);
-	}
-	srn_freearr(vampcmd);
-	(*status) = 0;
-} */

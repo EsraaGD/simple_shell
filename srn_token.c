@@ -5,7 +5,6 @@
  * @steeline: line
  * Return: Tokenized string
  */
-
 char **srn_token(char *steeline)
 {
 	char *tokensep = NULL, *tmp = NULL;

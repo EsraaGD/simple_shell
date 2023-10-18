@@ -1,9 +1,8 @@
 #include "srn.h"
-
 /**
  * srn_getpath - the user path
  * @vampcmd: command
- * Return: NULL
+ * Return: PATH
  */
 char *srn_getpath(char *vampcmd)
 {
@@ -17,13 +16,12 @@ char *srn_getpath(char *vampcmd)
 		{
 			if (stat(vampcmd, &st) == 0) /* if path exist */
 				return (srn_duplicate(vampcmd));
-
 			return (NULL);
 		}
 	}
-
 	path_env = srn_getenv("PATH");
-
+	if (path_env == NULL)
+		return (NULL);
 	direc = strtok(path_env, ":");
 	while (direc)
 	{
@@ -33,14 +31,12 @@ char *srn_getpath(char *vampcmd)
 			srn_copy(full_vcmd, direc);
 			srn_cat(full_vcmd, "/");
 			srn_cat(full_vcmd, vampcmd);
-
 			if (stat(full_vcmd, &st) == 0)
 			{
 				free(path_env);
 				return (full_vcmd);
 			}
 			free(full_vcmd), full_vcmd = NULL;
-
 			direc = strtok(NULL, ":");
 		}
 	}
