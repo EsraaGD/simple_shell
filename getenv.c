@@ -16,6 +16,7 @@ void print_env (char **vampcmd, int *status)
 		write(1, environ[v], strlen(environ[v]));
 		write(1, "\n", 1);
 	}
+	free(environ);
 }
 /**
  * *srn_getenv - the envrument
@@ -38,6 +39,7 @@ char *srn_getenv(char *input)
 			ivalue = strtok(NULL, "\n");
 			free(tmp);
 			env = srn_duplicate(ivalue);
+			free(tmp);
 			return (env);
 		}
 		free(tmp), tmp = NULL;
